@@ -1,0 +1,21 @@
+source: v1.131.3
+target: v1.137.0
+paths:
+  - [v1.131.3, v1.137.0]
+  - [v1.131.3, v1.132.3, v1.137.0]
+backup:
+  dump: database.dump
+  media: media
+auth:
+  email_env: IMMICH_REHEARSAL_EMAIL
+  password_env: IMMICH_REHEARSAL_PASSWORD
+assets:
+  - id: '12345678-1234-1234-1234-123456789abc'
+    sha256: '0000000000000000000000000000000000000000000000000000000000000000'
+timeouts:
+  pull: 600
+  restore: 300
+  migration: 300
+  startup: 120
+  api: 60
+  cleanup: 60

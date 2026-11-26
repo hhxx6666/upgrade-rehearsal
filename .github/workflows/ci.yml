@@ -1,0 +1,37 @@
+name: Unit tests and optional Docker rehearsal
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip install -e '.[test]'
+      - run: python -m pytest -q -m 'not docker'
+
+  docker:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -e '.[test]'
+      - run: docker compose version
+      - run: python -m pytest -q -m docker --basetemp=rehearsal-output
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: immich-rehearsal-reports
+          path: |
+            rehearsal-output/**/report.md
+            rehearsal-output/**/report.json

@@ -1,0 +1,1 @@
+"""Isolated Immich upgrade rehearsals."""

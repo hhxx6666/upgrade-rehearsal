@@ -1,0 +1,61 @@
+services:
+  database:
+    image: ${UR_DATABASE:?}
+    platform: linux/amd64
+    environment:
+      POSTGRES_PASSWORD: ${UR_DB_PASSWORD:?}
+      POSTGRES_USER: postgres
+      POSTGRES_DB: immich
+      POSTGRES_INITDB_ARGS: --data-checksums
+    volumes:
+      - database:/var/lib/postgresql/data
+    shm_size: 128mb
+    labels:
+      io.upgrade-rehearsal.project: ${UR_PROJECT:?}
+  redis:
+    image: ${UR_REDIS:?}
+    platform: linux/amd64
+    volumes:
+      - cache:/data
+    labels:
+      io.upgrade-rehearsal.project: ${UR_PROJECT:?}
+  immich:
+    image: ${UR_SERVER:?}
+    platform: linux/amd64
+    environment:
+      DB_HOSTNAME: database
+      DB_USERNAME: postgres
+      DB_DATABASE_NAME: immich
+      DB_PASSWORD: ${UR_DB_PASSWORD:?}
+      REDIS_HOSTNAME: redis
+      IMMICH_WORKERS_INCLUDE: api
+      IMMICH_LOG_LEVEL: log
+    volumes:
+      - media:/usr/src/app/upload
+    labels:
+      io.upgrade-rehearsal.project: ${UR_PROJECT:?}
+  probe:
+    image: docker.io/library/python:3.12.11-alpine3.22@sha256:efcdfa6a6b2fd2afb9c7dfa9a5b288a6f68338b5cfdebe6b637d986067d85757
+    platform: linux/amd64
+    command: ["sleep", "infinity"]
+    volumes:
+      - media:/media
+    labels:
+      io.upgrade-rehearsal.project: ${UR_PROJECT:?}
+
+volumes:
+  media:
+    labels:
+      io.upgrade-rehearsal.project: ${UR_PROJECT:?}
+  database:
+    labels:
+      io.upgrade-rehearsal.project: ${UR_PROJECT:?}
+  cache:
+    labels:
+      io.upgrade-rehearsal.project: ${UR_PROJECT:?}
+
+networks:
+  default:
+    internal: true
+    labels:
+      io.upgrade-rehearsal.project: ${UR_PROJECT:?}
