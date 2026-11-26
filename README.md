@@ -2,6 +2,8 @@
 
 UpgradeRehearsal restores an Immich backup in isolated Docker Compose projects, rehearses version upgrades, and verifies original photos by SHA-256 through the authenticated API.
 
+[简体中文](README.zh-CN.md) · MIT
+
 ```sh
 python -m pip install -e '.[test]'
 upgrade-rehearsal demo
