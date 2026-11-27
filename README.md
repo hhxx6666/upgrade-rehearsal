@@ -9,7 +9,9 @@ python -m pip install -e '.[test]'
 upgrade-rehearsal demo
 ```
 
-Use Python 3.11 or newer and Docker Compose v2 with a Linux x86_64 Docker daemon. The demo requires access to the image registries and runs without a model API key.
+Use Python 3.11 or newer and Docker Compose v2 or v5 with a Linux x86_64 Docker daemon. The demo requires access to the image registries and runs without a model API key.
+
+Read the [Docker integration report](docs/docker-demo/report.md) or [download its JSON](docs/docker-demo/report.json?raw=1). The staged route matched 1 of 1 configured originals at the target version. The direct route stopped at migration with 0 of 1 originals checked at the target. [GitHub Actions run](https://github.com/hhxx6666/upgrade-rehearsal/actions/runs/46001628557)
 
 Actual demo output from Ubuntu 24.04 on x86_64 with Docker Compose 2.40.3.
 
@@ -78,6 +80,8 @@ The CLI writes `report.md` and `report.json` to `rehearsal-output` by default. R
 Evidence is derived from allowlisted application log messages, API outcomes and command statuses. Reports use asset labels such as `asset-1` and omit dump contents, source paths, raw logs, photo bytes, UUIDs, hashes and credentials. To enable GPT analysis, add `--gpt-model MODEL` and set `OPENAI_API_KEY`. The model receives the same sanitized evidence, stage results, the official documentation index and the untried configured paths. Its structured response cites evidence and can prioritize a permitted remaining path. Each path reuses the original backup with a new project. Executor checks determine verdicts. Built-in analysis runs without the GPT service.
 
 The rehearsal covers application bootstrap and migration, API readiness and version, authentication, asset metadata, and original-file integrity for the configured assets. It does not exercise production traffic, external libraries, background jobs, machine learning, mobile clients or a rollback. Stop signals permit cleanup while abrupt process or daemon termination may require manual cleanup of the temporary project.
+
+Original-file coverage reports requested, attempted and matched SHA-256 checks for each path and version. Matched share is the number of matching originals divided by the number configured for that version. It measures coverage of the configured selection.
 
 ## Test
 
