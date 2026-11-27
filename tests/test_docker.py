@@ -1,8 +1,21 @@
 import pytest
 
-from upgrade_rehearsal.docker import PROJECT_LABEL, Command, Project
+from upgrade_rehearsal.docker import PROJECT_LABEL, Command, Project, preflight
 from upgrade_rehearsal.evidence import CheckError, UNKNOWN
 from upgrade_rehearsal.spec import SOURCE, TARGET, Timeouts
+
+
+@pytest.mark.parametrize("version", [b"2.40.1\n", b"v5.1.3\n", b"1.29.2\n"])
+def test_preflight_checks_the_compose_plugin_and_linux_daemon(monkeypatch, version):
+    def invoke(args, **kwargs):
+        return Command(0, version if args[1:3] == ["compose", "version"] else b"linux/x86_64\n", b"")
+
+    monkeypatch.setattr("upgrade_rehearsal.docker.invoke", invoke)
+    if version.startswith(b"1."):
+        with pytest.raises(CheckError, match="Compose v2 or v5"):
+            preflight()
+    else:
+        assert preflight()[0] == "docker-ready"
 
 
 def test_cleanup_uses_compose_project_and_both_resource_labels(tmp_path, monkeypatch):

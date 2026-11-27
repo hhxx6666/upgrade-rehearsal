@@ -1,0 +1,1146 @@
+{
+  "mode": "demo",
+  "paths": [
+    {
+      "name": "Path A",
+      "versions": [
+        "v1.131.3",
+        "v1.137.0"
+      ],
+      "stages": [
+        {
+          "name": "image pull",
+          "version": "v1.131.3",
+          "status": "passed",
+          "seconds": 0.138,
+          "evidence_id": "E013",
+          "asset": null
+        },
+        {
+          "name": "dependencies",
+          "version": "v1.131.3",
+          "status": "passed",
+          "seconds": 1.623,
+          "evidence_id": "E014",
+          "asset": null
+        },
+        {
+          "name": "restore database",
+          "version": "v1.131.3",
+          "status": "passed",
+          "seconds": 0.204,
+          "evidence_id": "E015",
+          "asset": null
+        },
+        {
+          "name": "copy media",
+          "version": "v1.131.3",
+          "status": "passed",
+          "seconds": 0.066,
+          "evidence_id": "E016",
+          "asset": null
+        },
+        {
+          "name": "container start",
+          "version": "v1.131.3",
+          "status": "passed",
+          "seconds": 0.233,
+          "evidence_id": "E017",
+          "asset": null
+        },
+        {
+          "name": "migration",
+          "version": "v1.131.3",
+          "status": "passed",
+          "seconds": 3.482,
+          "evidence_id": "E018",
+          "asset": null
+        },
+        {
+          "name": "API readiness",
+          "version": "v1.131.3",
+          "status": "passed",
+          "seconds": 0.493,
+          "evidence_id": "E019",
+          "asset": null
+        },
+        {
+          "name": "authentication",
+          "version": "v1.131.3",
+          "status": "passed",
+          "seconds": 0.201,
+          "evidence_id": "E020",
+          "asset": null
+        },
+        {
+          "name": "read asset",
+          "version": "v1.131.3",
+          "status": "passed",
+          "seconds": 0.141,
+          "evidence_id": "E021",
+          "asset": "asset-1"
+        },
+        {
+          "name": "original SHA-256",
+          "version": "v1.131.3",
+          "status": "passed",
+          "seconds": 0.124,
+          "evidence_id": "E022",
+          "asset": "asset-1"
+        },
+        {
+          "name": "image pull",
+          "version": "v1.137.0",
+          "status": "passed",
+          "seconds": 18.88,
+          "evidence_id": "E023",
+          "asset": null
+        },
+        {
+          "name": "dependencies",
+          "version": "v1.137.0",
+          "status": "passed",
+          "seconds": 7.918,
+          "evidence_id": "E024",
+          "asset": null
+        },
+        {
+          "name": "container start",
+          "version": "v1.137.0",
+          "status": "passed",
+          "seconds": 0.246,
+          "evidence_id": "E025",
+          "asset": null
+        },
+        {
+          "name": "migration",
+          "version": "v1.137.0",
+          "status": "check failed",
+          "seconds": 2.295,
+          "evidence_id": "E026",
+          "asset": null
+        },
+        {
+          "name": "cleanup",
+          "version": null,
+          "status": "passed",
+          "seconds": 10.361,
+          "evidence_id": "E027",
+          "asset": null
+        }
+      ],
+      "status": "check failed",
+      "assets_requested": 1,
+      "first_failure": {
+        "name": "migration",
+        "version": "v1.137.0",
+        "status": "check failed",
+        "seconds": 2.295,
+        "evidence_id": "E026",
+        "asset": null
+      },
+      "final_originals": [],
+      "asset_coverage": {
+        "v1.131.3": {
+          "requested": 1,
+          "attempted": 1,
+          "matched": 1,
+          "matched_fraction": 1.0
+        },
+        "v1.137.0": {
+          "requested": 1,
+          "attempted": 0,
+          "matched": 0,
+          "matched_fraction": 0.0
+        }
+      },
+      "verified_scope": [
+        {
+          "name": "image pull",
+          "version": "v1.131.3",
+          "status": "passed",
+          "seconds": 0.138,
+          "evidence_id": "E013",
+          "asset": null
+        },
+        {
+          "name": "dependencies",
+          "version": "v1.131.3",
+          "status": "passed",
+          "seconds": 1.623,
+          "evidence_id": "E014",
+          "asset": null
+        },
+        {
+          "name": "restore database",
+          "version": "v1.131.3",
+          "status": "passed",
+          "seconds": 0.204,
+          "evidence_id": "E015",
+          "asset": null
+        },
+        {
+          "name": "copy media",
+          "version": "v1.131.3",
+          "status": "passed",
+          "seconds": 0.066,
+          "evidence_id": "E016",
+          "asset": null
+        },
+        {
+          "name": "container start",
+          "version": "v1.131.3",
+          "status": "passed",
+          "seconds": 0.233,
+          "evidence_id": "E017",
+          "asset": null
+        },
+        {
+          "name": "migration",
+          "version": "v1.131.3",
+          "status": "passed",
+          "seconds": 3.482,
+          "evidence_id": "E018",
+          "asset": null
+        },
+        {
+          "name": "API readiness",
+          "version": "v1.131.3",
+          "status": "passed",
+          "seconds": 0.493,
+          "evidence_id": "E019",
+          "asset": null
+        },
+        {
+          "name": "authentication",
+          "version": "v1.131.3",
+          "status": "passed",
+          "seconds": 0.201,
+          "evidence_id": "E020",
+          "asset": null
+        },
+        {
+          "name": "read asset",
+          "version": "v1.131.3",
+          "status": "passed",
+          "seconds": 0.141,
+          "evidence_id": "E021",
+          "asset": "asset-1"
+        },
+        {
+          "name": "original SHA-256",
+          "version": "v1.131.3",
+          "status": "passed",
+          "seconds": 0.124,
+          "evidence_id": "E022",
+          "asset": "asset-1"
+        },
+        {
+          "name": "image pull",
+          "version": "v1.137.0",
+          "status": "passed",
+          "seconds": 18.88,
+          "evidence_id": "E023",
+          "asset": null
+        },
+        {
+          "name": "dependencies",
+          "version": "v1.137.0",
+          "status": "passed",
+          "seconds": 7.918,
+          "evidence_id": "E024",
+          "asset": null
+        },
+        {
+          "name": "container start",
+          "version": "v1.137.0",
+          "status": "passed",
+          "seconds": 0.246,
+          "evidence_id": "E025",
+          "asset": null
+        },
+        {
+          "name": "cleanup",
+          "version": null,
+          "status": "passed",
+          "seconds": 10.361,
+          "evidence_id": "E027",
+          "asset": null
+        }
+      ]
+    },
+    {
+      "name": "Path B",
+      "versions": [
+        "v1.131.3",
+        "v1.132.3",
+        "v1.137.0"
+      ],
+      "stages": [
+        {
+          "name": "image pull",
+          "version": "v1.131.3",
+          "status": "passed",
+          "seconds": 0.138,
+          "evidence_id": "E028",
+          "asset": null
+        },
+        {
+          "name": "dependencies",
+          "version": "v1.131.3",
+          "status": "passed",
+          "seconds": 1.632,
+          "evidence_id": "E029",
+          "asset": null
+        },
+        {
+          "name": "restore database",
+          "version": "v1.131.3",
+          "status": "passed",
+          "seconds": 0.192,
+          "evidence_id": "E030",
+          "asset": null
+        },
+        {
+          "name": "copy media",
+          "version": "v1.131.3",
+          "status": "passed",
+          "seconds": 0.065,
+          "evidence_id": "E031",
+          "asset": null
+        },
+        {
+          "name": "container start",
+          "version": "v1.131.3",
+          "status": "passed",
+          "seconds": 0.227,
+          "evidence_id": "E032",
+          "asset": null
+        },
+        {
+          "name": "migration",
+          "version": "v1.131.3",
+          "status": "passed",
+          "seconds": 3.448,
+          "evidence_id": "E033",
+          "asset": null
+        },
+        {
+          "name": "API readiness",
+          "version": "v1.131.3",
+          "status": "passed",
+          "seconds": 0.463,
+          "evidence_id": "E034",
+          "asset": null
+        },
+        {
+          "name": "authentication",
+          "version": "v1.131.3",
+          "status": "passed",
+          "seconds": 0.188,
+          "evidence_id": "E035",
+          "asset": null
+        },
+        {
+          "name": "read asset",
+          "version": "v1.131.3",
+          "status": "passed",
+          "seconds": 0.132,
+          "evidence_id": "E036",
+          "asset": "asset-1"
+        },
+        {
+          "name": "original SHA-256",
+          "version": "v1.131.3",
+          "status": "passed",
+          "seconds": 0.128,
+          "evidence_id": "E037",
+          "asset": "asset-1"
+        },
+        {
+          "name": "image pull",
+          "version": "v1.132.3",
+          "status": "passed",
+          "seconds": 18.165,
+          "evidence_id": "E038",
+          "asset": null
+        },
+        {
+          "name": "dependencies",
+          "version": "v1.132.3",
+          "status": "passed",
+          "seconds": 8.071,
+          "evidence_id": "E039",
+          "asset": null
+        },
+        {
+          "name": "container start",
+          "version": "v1.132.3",
+          "status": "passed",
+          "seconds": 0.253,
+          "evidence_id": "E040",
+          "asset": null
+        },
+        {
+          "name": "migration",
+          "version": "v1.132.3",
+          "status": "passed",
+          "seconds": 3.43,
+          "evidence_id": "E041",
+          "asset": null
+        },
+        {
+          "name": "API readiness",
+          "version": "v1.132.3",
+          "status": "passed",
+          "seconds": 0.246,
+          "evidence_id": "E042",
+          "asset": null
+        },
+        {
+          "name": "authentication",
+          "version": "v1.132.3",
+          "status": "passed",
+          "seconds": 0.191,
+          "evidence_id": "E043",
+          "asset": null
+        },
+        {
+          "name": "read asset",
+          "version": "v1.132.3",
+          "status": "passed",
+          "seconds": 0.13,
+          "evidence_id": "E044",
+          "asset": "asset-1"
+        },
+        {
+          "name": "original SHA-256",
+          "version": "v1.132.3",
+          "status": "passed",
+          "seconds": 0.127,
+          "evidence_id": "E045",
+          "asset": "asset-1"
+        },
+        {
+          "name": "image pull",
+          "version": "v1.137.0",
+          "status": "passed",
+          "seconds": 0.144,
+          "evidence_id": "E046",
+          "asset": null
+        },
+        {
+          "name": "dependencies",
+          "version": "v1.137.0",
+          "status": "passed",
+          "seconds": 0.738,
+          "evidence_id": "E047",
+          "asset": null
+        },
+        {
+          "name": "container start",
+          "version": "v1.137.0",
+          "status": "passed",
+          "seconds": 0.252,
+          "evidence_id": "E048",
+          "asset": null
+        },
+        {
+          "name": "migration",
+          "version": "v1.137.0",
+          "status": "passed",
+          "seconds": 3.435,
+          "evidence_id": "E049",
+          "asset": null
+        },
+        {
+          "name": "API readiness",
+          "version": "v1.137.0",
+          "status": "passed",
+          "seconds": 0.253,
+          "evidence_id": "E050",
+          "asset": null
+        },
+        {
+          "name": "authentication",
+          "version": "v1.137.0",
+          "status": "passed",
+          "seconds": 0.188,
+          "evidence_id": "E051",
+          "asset": null
+        },
+        {
+          "name": "read asset",
+          "version": "v1.137.0",
+          "status": "passed",
+          "seconds": 0.134,
+          "evidence_id": "E052",
+          "asset": "asset-1"
+        },
+        {
+          "name": "original SHA-256",
+          "version": "v1.137.0",
+          "status": "passed",
+          "seconds": 0.129,
+          "evidence_id": "E053",
+          "asset": "asset-1"
+        },
+        {
+          "name": "cleanup",
+          "version": null,
+          "status": "passed",
+          "seconds": 10.346,
+          "evidence_id": "E054",
+          "asset": null
+        }
+      ],
+      "status": "passed",
+      "assets_requested": 1,
+      "first_failure": null,
+      "final_originals": [
+        {
+          "name": "original SHA-256",
+          "version": "v1.137.0",
+          "status": "passed",
+          "seconds": 0.129,
+          "evidence_id": "E053",
+          "asset": "asset-1"
+        }
+      ],
+      "asset_coverage": {
+        "v1.131.3": {
+          "requested": 1,
+          "attempted": 1,
+          "matched": 1,
+          "matched_fraction": 1.0
+        },
+        "v1.132.3": {
+          "requested": 1,
+          "attempted": 1,
+          "matched": 1,
+          "matched_fraction": 1.0
+        },
+        "v1.137.0": {
+          "requested": 1,
+          "attempted": 1,
+          "matched": 1,
+          "matched_fraction": 1.0
+        }
+      },
+      "verified_scope": [
+        {
+          "name": "image pull",
+          "version": "v1.131.3",
+          "status": "passed",
+          "seconds": 0.138,
+          "evidence_id": "E028",
+          "asset": null
+        },
+        {
+          "name": "dependencies",
+          "version": "v1.131.3",
+          "status": "passed",
+          "seconds": 1.632,
+          "evidence_id": "E029",
+          "asset": null
+        },
+        {
+          "name": "restore database",
+          "version": "v1.131.3",
+          "status": "passed",
+          "seconds": 0.192,
+          "evidence_id": "E030",
+          "asset": null
+        },
+        {
+          "name": "copy media",
+          "version": "v1.131.3",
+          "status": "passed",
+          "seconds": 0.065,
+          "evidence_id": "E031",
+          "asset": null
+        },
+        {
+          "name": "container start",
+          "version": "v1.131.3",
+          "status": "passed",
+          "seconds": 0.227,
+          "evidence_id": "E032",
+          "asset": null
+        },
+        {
+          "name": "migration",
+          "version": "v1.131.3",
+          "status": "passed",
+          "seconds": 3.448,
+          "evidence_id": "E033",
+          "asset": null
+        },
+        {
+          "name": "API readiness",
+          "version": "v1.131.3",
+          "status": "passed",
+          "seconds": 0.463,
+          "evidence_id": "E034",
+          "asset": null
+        },
+        {
+          "name": "authentication",
+          "version": "v1.131.3",
+          "status": "passed",
+          "seconds": 0.188,
+          "evidence_id": "E035",
+          "asset": null
+        },
+        {
+          "name": "read asset",
+          "version": "v1.131.3",
+          "status": "passed",
+          "seconds": 0.132,
+          "evidence_id": "E036",
+          "asset": "asset-1"
+        },
+        {
+          "name": "original SHA-256",
+          "version": "v1.131.3",
+          "status": "passed",
+          "seconds": 0.128,
+          "evidence_id": "E037",
+          "asset": "asset-1"
+        },
+        {
+          "name": "image pull",
+          "version": "v1.132.3",
+          "status": "passed",
+          "seconds": 18.165,
+          "evidence_id": "E038",
+          "asset": null
+        },
+        {
+          "name": "dependencies",
+          "version": "v1.132.3",
+          "status": "passed",
+          "seconds": 8.071,
+          "evidence_id": "E039",
+          "asset": null
+        },
+        {
+          "name": "container start",
+          "version": "v1.132.3",
+          "status": "passed",
+          "seconds": 0.253,
+          "evidence_id": "E040",
+          "asset": null
+        },
+        {
+          "name": "migration",
+          "version": "v1.132.3",
+          "status": "passed",
+          "seconds": 3.43,
+          "evidence_id": "E041",
+          "asset": null
+        },
+        {
+          "name": "API readiness",
+          "version": "v1.132.3",
+          "status": "passed",
+          "seconds": 0.246,
+          "evidence_id": "E042",
+          "asset": null
+        },
+        {
+          "name": "authentication",
+          "version": "v1.132.3",
+          "status": "passed",
+          "seconds": 0.191,
+          "evidence_id": "E043",
+          "asset": null
+        },
+        {
+          "name": "read asset",
+          "version": "v1.132.3",
+          "status": "passed",
+          "seconds": 0.13,
+          "evidence_id": "E044",
+          "asset": "asset-1"
+        },
+        {
+          "name": "original SHA-256",
+          "version": "v1.132.3",
+          "status": "passed",
+          "seconds": 0.127,
+          "evidence_id": "E045",
+          "asset": "asset-1"
+        },
+        {
+          "name": "image pull",
+          "version": "v1.137.0",
+          "status": "passed",
+          "seconds": 0.144,
+          "evidence_id": "E046",
+          "asset": null
+        },
+        {
+          "name": "dependencies",
+          "version": "v1.137.0",
+          "status": "passed",
+          "seconds": 0.738,
+          "evidence_id": "E047",
+          "asset": null
+        },
+        {
+          "name": "container start",
+          "version": "v1.137.0",
+          "status": "passed",
+          "seconds": 0.252,
+          "evidence_id": "E048",
+          "asset": null
+        },
+        {
+          "name": "migration",
+          "version": "v1.137.0",
+          "status": "passed",
+          "seconds": 3.435,
+          "evidence_id": "E049",
+          "asset": null
+        },
+        {
+          "name": "API readiness",
+          "version": "v1.137.0",
+          "status": "passed",
+          "seconds": 0.253,
+          "evidence_id": "E050",
+          "asset": null
+        },
+        {
+          "name": "authentication",
+          "version": "v1.137.0",
+          "status": "passed",
+          "seconds": 0.188,
+          "evidence_id": "E051",
+          "asset": null
+        },
+        {
+          "name": "read asset",
+          "version": "v1.137.0",
+          "status": "passed",
+          "seconds": 0.134,
+          "evidence_id": "E052",
+          "asset": "asset-1"
+        },
+        {
+          "name": "original SHA-256",
+          "version": "v1.137.0",
+          "status": "passed",
+          "seconds": 0.129,
+          "evidence_id": "E053",
+          "asset": "asset-1"
+        },
+        {
+          "name": "cleanup",
+          "version": null,
+          "status": "passed",
+          "seconds": 10.346,
+          "evidence_id": "E054",
+          "asset": null
+        }
+      ]
+    }
+  ],
+  "setup": [
+    {
+      "name": "Docker preflight",
+      "version": null,
+      "status": "passed",
+      "seconds": 0.222,
+      "evidence_id": "E001",
+      "asset": null
+    },
+    {
+      "name": "image pull",
+      "version": "v1.131.3",
+      "status": "passed",
+      "seconds": 22.105,
+      "evidence_id": "E002",
+      "asset": null
+    },
+    {
+      "name": "dependencies",
+      "version": "v1.131.3",
+      "status": "passed",
+      "seconds": 7.173,
+      "evidence_id": "E003",
+      "asset": null
+    },
+    {
+      "name": "container start",
+      "version": "v1.131.3",
+      "status": "passed",
+      "seconds": 0.252,
+      "evidence_id": "E004",
+      "asset": null
+    },
+    {
+      "name": "migration",
+      "version": "v1.131.3",
+      "status": "passed",
+      "seconds": 3.435,
+      "evidence_id": "E005",
+      "asset": null
+    },
+    {
+      "name": "API readiness",
+      "version": "v1.131.3",
+      "status": "passed",
+      "seconds": 0.485,
+      "evidence_id": "E006",
+      "asset": null
+    },
+    {
+      "name": "create synthetic account",
+      "version": "v1.131.3",
+      "status": "passed",
+      "seconds": 0.359,
+      "evidence_id": "E007",
+      "asset": null
+    },
+    {
+      "name": "upload synthetic PNG",
+      "version": "v1.131.3",
+      "status": "passed",
+      "seconds": 0.142,
+      "evidence_id": "E008",
+      "asset": "asset-1"
+    },
+    {
+      "name": "read asset",
+      "version": "v1.131.3",
+      "status": "passed",
+      "seconds": 0.13,
+      "evidence_id": "E009",
+      "asset": "asset-1"
+    },
+    {
+      "name": "original SHA-256",
+      "version": "v1.131.3",
+      "status": "passed",
+      "seconds": 0.128,
+      "evidence_id": "E010",
+      "asset": "asset-1"
+    },
+    {
+      "name": "export synthetic backup",
+      "version": "v1.131.3",
+      "status": "passed",
+      "seconds": 0.383,
+      "evidence_id": "E011",
+      "asset": null
+    },
+    {
+      "name": "cleanup",
+      "version": null,
+      "status": "passed",
+      "seconds": 10.333,
+      "evidence_id": "E012",
+      "asset": null
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E001",
+      "code": "docker-ready",
+      "detail": "A supported Docker Compose plugin and a Linux x86_64 daemon responded."
+    },
+    {
+      "id": "E002",
+      "code": "images-pulled",
+      "detail": "Compose pulled or confirmed the fixed release images."
+    },
+    {
+      "id": "E003",
+      "code": "dependencies-ready",
+      "detail": "PostgreSQL accepted TCP probes and the cache replied PONG."
+    },
+    {
+      "id": "E004",
+      "code": "container-started",
+      "detail": "Compose started the requested Immich container."
+    },
+    {
+      "id": "E005",
+      "code": "application-listening",
+      "detail": "Immich logged that it is listening at the requested version after bootstrap."
+    },
+    {
+      "id": "E006",
+      "code": "api-ready",
+      "detail": "The in-network ping returned pong and the version API matched the requested release."
+    },
+    {
+      "id": "E007",
+      "code": "authenticated",
+      "detail": "Immich login returned an access token inside the project network."
+    },
+    {
+      "id": "E008",
+      "code": "sample-uploaded",
+      "detail": "Immich returned a new asset ID for the generated PNG."
+    },
+    {
+      "id": "E009",
+      "code": "asset-read",
+      "detail": "The authenticated API returned the requested asset."
+    },
+    {
+      "id": "E010",
+      "code": "sha256-match",
+      "detail": "The streamed original matched the expected SHA-256."
+    },
+    {
+      "id": "E011",
+      "code": "sample-exported",
+      "detail": "The custom-format database dump and media tree were exported from the stopped instance."
+    },
+    {
+      "id": "E012",
+      "code": "cleanup-verified",
+      "detail": "No containers, networks or volumes with both project labels remain."
+    },
+    {
+      "id": "E013",
+      "code": "images-pulled",
+      "detail": "Compose pulled or confirmed the fixed release images."
+    },
+    {
+      "id": "E014",
+      "code": "dependencies-ready",
+      "detail": "PostgreSQL accepted TCP probes and the cache replied PONG."
+    },
+    {
+      "id": "E015",
+      "code": "database-restored",
+      "detail": "pg_restore committed the archive into the fresh database."
+    },
+    {
+      "id": "E016",
+      "code": "media-copied",
+      "detail": "The source media was read into a separate project volume."
+    },
+    {
+      "id": "E017",
+      "code": "container-started",
+      "detail": "Compose started the requested Immich container."
+    },
+    {
+      "id": "E018",
+      "code": "application-listening",
+      "detail": "Immich logged that it is listening at the requested version after bootstrap."
+    },
+    {
+      "id": "E019",
+      "code": "api-ready",
+      "detail": "The in-network ping returned pong and the version API matched the requested release."
+    },
+    {
+      "id": "E020",
+      "code": "authenticated",
+      "detail": "Immich login returned an access token inside the project network."
+    },
+    {
+      "id": "E021",
+      "code": "asset-read",
+      "detail": "The authenticated API returned the requested asset."
+    },
+    {
+      "id": "E022",
+      "code": "sha256-match",
+      "detail": "The streamed original matched the expected SHA-256."
+    },
+    {
+      "id": "E023",
+      "code": "images-pulled",
+      "detail": "Compose pulled or confirmed the fixed release images."
+    },
+    {
+      "id": "E024",
+      "code": "dependencies-ready",
+      "detail": "PostgreSQL accepted TCP probes and the cache replied PONG."
+    },
+    {
+      "id": "E025",
+      "code": "container-started",
+      "detail": "Compose started the requested Immich container."
+    },
+    {
+      "id": "E026",
+      "code": "invalid-upgrade-path",
+      "detail": "Migrations failed: Error: Invalid upgrade path"
+    },
+    {
+      "id": "E027",
+      "code": "cleanup-verified",
+      "detail": "No containers, networks or volumes with both project labels remain."
+    },
+    {
+      "id": "E028",
+      "code": "images-pulled",
+      "detail": "Compose pulled or confirmed the fixed release images."
+    },
+    {
+      "id": "E029",
+      "code": "dependencies-ready",
+      "detail": "PostgreSQL accepted TCP probes and the cache replied PONG."
+    },
+    {
+      "id": "E030",
+      "code": "database-restored",
+      "detail": "pg_restore committed the archive into the fresh database."
+    },
+    {
+      "id": "E031",
+      "code": "media-copied",
+      "detail": "The source media was read into a separate project volume."
+    },
+    {
+      "id": "E032",
+      "code": "container-started",
+      "detail": "Compose started the requested Immich container."
+    },
+    {
+      "id": "E033",
+      "code": "application-listening",
+      "detail": "Immich logged that it is listening at the requested version after bootstrap."
+    },
+    {
+      "id": "E034",
+      "code": "api-ready",
+      "detail": "The in-network ping returned pong and the version API matched the requested release."
+    },
+    {
+      "id": "E035",
+      "code": "authenticated",
+      "detail": "Immich login returned an access token inside the project network."
+    },
+    {
+      "id": "E036",
+      "code": "asset-read",
+      "detail": "The authenticated API returned the requested asset."
+    },
+    {
+      "id": "E037",
+      "code": "sha256-match",
+      "detail": "The streamed original matched the expected SHA-256."
+    },
+    {
+      "id": "E038",
+      "code": "images-pulled",
+      "detail": "Compose pulled or confirmed the fixed release images."
+    },
+    {
+      "id": "E039",
+      "code": "dependencies-ready",
+      "detail": "PostgreSQL accepted TCP probes and the cache replied PONG."
+    },
+    {
+      "id": "E040",
+      "code": "container-started",
+      "detail": "Compose started the requested Immich container."
+    },
+    {
+      "id": "E041",
+      "code": "application-listening",
+      "detail": "Immich logged that it is listening at the requested version after bootstrap."
+    },
+    {
+      "id": "E042",
+      "code": "api-ready",
+      "detail": "The in-network ping returned pong and the version API matched the requested release."
+    },
+    {
+      "id": "E043",
+      "code": "authenticated",
+      "detail": "Immich login returned an access token inside the project network."
+    },
+    {
+      "id": "E044",
+      "code": "asset-read",
+      "detail": "The authenticated API returned the requested asset."
+    },
+    {
+      "id": "E045",
+      "code": "sha256-match",
+      "detail": "The streamed original matched the expected SHA-256."
+    },
+    {
+      "id": "E046",
+      "code": "images-pulled",
+      "detail": "Compose pulled or confirmed the fixed release images."
+    },
+    {
+      "id": "E047",
+      "code": "dependencies-ready",
+      "detail": "PostgreSQL accepted TCP probes and the cache replied PONG."
+    },
+    {
+      "id": "E048",
+      "code": "container-started",
+      "detail": "Compose started the requested Immich container."
+    },
+    {
+      "id": "E049",
+      "code": "application-listening",
+      "detail": "Immich logged that it is listening at the requested version after bootstrap."
+    },
+    {
+      "id": "E050",
+      "code": "api-ready",
+      "detail": "The in-network ping returned pong and the version API matched the requested release."
+    },
+    {
+      "id": "E051",
+      "code": "authenticated",
+      "detail": "Immich login returned an access token inside the project network."
+    },
+    {
+      "id": "E052",
+      "code": "asset-read",
+      "detail": "The authenticated API returned the requested asset."
+    },
+    {
+      "id": "E053",
+      "code": "sha256-match",
+      "detail": "The streamed original matched the expected SHA-256."
+    },
+    {
+      "id": "E054",
+      "code": "cleanup-verified",
+      "detail": "No containers, networks or volumes with both project labels remain."
+    }
+  ],
+  "analysis": [
+    {
+      "mode": "built-in",
+      "diagnosis": "Immich reported the documented TypeORM upgrade path error",
+      "failure_stage": "migration",
+      "evidence_ids": [
+        "E026"
+      ],
+      "documentation_links": [
+        "https://docs.immich.app/errors/#typeorm-upgrade"
+      ],
+      "next_path": [
+        "v1.131.3",
+        "v1.132.3",
+        "v1.137.0"
+      ]
+    }
+  ],
+  "status": "passed",
+  "documents": {
+    "typeorm": "https://docs.immich.app/errors/#typeorm-upgrade",
+    "backup": "https://docs.immich.app/administration/backup-and-restore/",
+    "source": "https://github.com/immich-app/immich/releases/tag/v1.131.3",
+    "bridge": "https://github.com/immich-app/immich/releases/tag/v1.132.3",
+    "target": "https://github.com/immich-app/immich/releases/tag/v1.137.0"
+  }
+}

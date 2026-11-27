@@ -9,7 +9,9 @@ python -m pip install -e '.[test]'
 upgrade-rehearsal demo
 ```
 
-需要 Python 3.11 或更新版本，以及 Docker Compose v2 和 Linux x86_64 的 Docker 守护进程。演示需要能访问镜像仓库，但不需要模型 API Key。
+需要 Python 3.11 或更新版本、Docker Compose v2 或 v5，以及 Linux x86_64 的 Docker 守护进程。演示需要能访问镜像仓库，但不需要模型 API Key。
+
+可查看 [Docker 集成演练报告](docs/docker-demo/report.md) 或[下载 JSON](docs/docker-demo/report.json?raw=1)。分段路径在目标版本校验了 1/1 个配置的原始文件。直升在迁移阶段停止，目标版本校验了 0/1 个。[GitHub Actions 运行记录](https://github.com/hhxx6666/upgrade-rehearsal/actions/runs/46001628557)
 
 以下输出是在 Ubuntu 24.04 / x86_64、Docker Compose 2.40.3 上实际运行的结果。
 
@@ -74,6 +76,8 @@ upgrade-rehearsal run --config rehearsal.yaml
 ## 报告与可选的 GPT 分析
 
 CLI 默认把 `report.md` 和 `report.json` 写到 `rehearsal-output`。报告记录版本路径、各检查耗时、第一个失败的检查、证据 ID、最终的原始文件校验结果，以及实际验证到的范围。每条路径都有独立的临时目录、内部 Compose 网络、PostgreSQL 数据卷和媒体卷。源备份从宿主机读取并流式写入演练项目。整个过程不发布任何端口，HTTP 检查由探测容器发起。执行器依据项目的 Compose 身份和标签，在完成或受控中断之后核对容器、卷和网络的清理情况。Docker 守护进程可能会缓存已拉取的镜像。
+
+原图覆盖率按路径和版本列出配置数量、尝试 SHA-256 校验的数量及哈希匹配的数量。匹配比例的分母为配置中选定的资产总数。
 
 证据来自白名单内的应用日志、API 返回结果和命令状态。报告使用 `asset-1` 这类资产代号，不写入 dump 内容、源路径、原始日志、照片字节、UUID、哈希或凭据。要启用 GPT 分析，加上 `--gpt-model MODEL` 并设置 `OPENAI_API_KEY`。模型拿到的也是同一份已脱敏证据、各阶段结果、官方文档索引和尚未尝试的配置路径。它的结构化回答需要引用证据，可以为一条允许的剩余路径排定优先级。每条路径都用原始备份和新的项目重跑，结论由执行器的检查决定。内置分析不需要 GPT 服务。
 

@@ -112,6 +112,14 @@ def test_paths_restore_the_same_unmodified_backup_in_separate_projects(config, t
     assert classify(report, demonstration=True) == PASS
     assert classify(report, demonstration=False) == FAIL
     assert report.paths[1].final_originals[0].status == PASS
+    paths = report.as_json()["paths"]
+    assert paths[0]["asset_coverage"][TARGET] == {
+        "requested": 1, "attempted": 0, "matched": 0, "matched_fraction": 0,
+    }
+    assert paths[1]["asset_coverage"][TARGET] == {
+        "requested": 1, "attempted": 1, "matched": 1, "matched_fraction": 1,
+    }
+    assert f"| Path A | {TARGET} | 1 | 0 | 0 | 0.0% |" in report.markdown()
     assert report.analysis[0]["next_path"] == STAGED
     report.write(tmp_path / "reports")
     for file in (tmp_path / "reports").iterdir():
@@ -138,6 +146,9 @@ def test_failed_checks_have_distinct_evidence(config, failure, code, verdict):
         assert not any(stage.version == TARGET for stage in outcome.stages)
     if failure in {"missing", "digest"}:
         assert outcome.final_originals[0].status == FAIL
+        assert outcome.asset_coverage()[TARGET] == {
+            "requested": 1, "attempted": 1, "matched": 0, "matched_fraction": 0,
+        }
 
 
 def test_interrupt_cleans_project_and_removes_temporary_workspace(config):

@@ -58,7 +58,8 @@ def verify(report, stages, api, backup, version):
 
 
 def run_path(report, config, versions, *, project_factory=Project, api_factory=Immich):
-    path = PathResult("Path A" if versions == DIRECT else "Path B", versions)
+    path = PathResult("Path A" if versions == DIRECT else "Path B", versions,
+                      assets_requested=len(config.backup.assets))
     report.paths.append(path)
     try:
         with TemporaryDirectory(prefix="upgrade-rehearsal-") as temporary:
