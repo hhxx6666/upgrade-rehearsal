@@ -55,14 +55,14 @@ def docker_env():
 def preflight():
     env = docker_env()
     compose = invoke(["docker", "compose", "version", "--short"], timeout=15, env=env)
-    if compose.code or not re.match(rb"v?2\.", compose.stdout.strip()):
-        raise CheckError("compose-unavailable", "Docker Compose v2 is required.")
+    if compose.code or not re.match(rb"v?(2|5)\.", compose.stdout.strip()):
+        raise CheckError("compose-unavailable", "Docker Compose v2 or v5 is required.")
     engine = invoke(["docker", "info", "--format", "{{.OSType}}/{{.Architecture}}"], timeout=15, env=env)
     if engine.code:
         raise CheckError("engine-unavailable", "The Docker daemon could not be reached.")
     if engine.stdout.strip() not in {b"linux/amd64", b"linux/x86_64"}:
         raise CheckError("engine-platform", "The Docker daemon must run Linux on x86_64.")
-    return "docker-ready", "Docker Compose v2 and a Linux x86_64 daemon responded."
+    return "docker-ready", "A supported Docker Compose plugin and a Linux x86_64 daemon responded."
 
 
 def remaining(deadline):
