@@ -75,6 +75,7 @@ class PathResult:
     versions: tuple[str, ...]
     stages: list[Stage] = field(default_factory=list)
     status: str = NOT_RUN
+    assets_requested: int | None = None
 
     @property
     def first_failure(self) -> Stage | None:
@@ -83,6 +84,19 @@ class PathResult:
     @property
     def final_originals(self) -> list[Stage]:
         return [stage for stage in self.stages if stage.version == self.versions[-1] and stage.name == "original SHA-256"]
+
+    def asset_coverage(self) -> dict:
+        coverage = {}
+        for version in self.versions:
+            checks = [s for s in self.stages if s.version == version and s.name == "original SHA-256"]
+            matched = sum(s.status == PASS for s in checks)
+            coverage[version] = {
+                "requested": self.assets_requested,
+                "attempted": len(checks),
+                "matched": matched,
+                "matched_fraction": matched / self.assets_requested if self.assets_requested else None,
+            }
+        return coverage
 
     def finish(self) -> None:
         first = self.first_failure
@@ -132,6 +146,7 @@ class Report:
         for path, item in zip(self.paths, result["paths"], strict=True):
             item["first_failure"] = asdict(path.first_failure) if path.first_failure else None
             item["final_originals"] = [asdict(stage) for stage in path.final_originals]
+            item["asset_coverage"] = path.asset_coverage()
             item["verified_scope"] = [asdict(stage) for stage in path.stages if stage.status == PASS]
         return result
 
@@ -151,6 +166,18 @@ class Report:
             for stage in stages:
                 lines.append(f"| {stage.version or '—'} | {stage.name} | {stage.asset or '—'} | {stage.status} | "
                              f"{stage.seconds:.3f} | {stage.evidence_id} |")
+        if self.paths:
+            lines.extend(["", "## Original-file coverage", "",
+                          "The denominator is the number of configured assets for each version.", "",
+                          "| Path | Version | Requested | SHA-256 attempted | SHA-256 matched | Matched share |",
+                          "| --- | --- | ---: | ---: | ---: | ---: |"])
+            for path in self.paths:
+                for version, counts in path.asset_coverage().items():
+                    requested = counts["requested"] if counts["requested"] is not None else "—"
+                    fraction = counts["matched_fraction"]
+                    share = f"{fraction:.1%}" if fraction is not None else "—"
+                    lines.append(f"| {path.name} | {version} | {requested} | {counts['attempted']} | "
+                                 f"{counts['matched']} | {share} |")
         lines.extend(["", "## Evidence", ""])
         lines.extend(f"- **{item.id}** `{item.code}` — {item.detail}" for item in self.evidence)
         if self.analysis:

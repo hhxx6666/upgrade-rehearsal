@@ -111,7 +111,7 @@ def main(argv=None):
     if args.mode == "demo":
         for name, versions in (("Path A", DIRECT), ("Path B", STAGED)):
             if not any(path.versions == versions for path in report.paths):
-                report.paths.append(PathResult(name, versions))
+                report.paths.append(PathResult(name, versions, assets_requested=1))
     try:
         report.write(args.report_dir)
     except OSError:
@@ -126,8 +126,9 @@ def main(argv=None):
         print(f"{path.name} {' -> '.join(path.versions)} — {path.status}")
         if failure := path.first_failure:
             print(f"  {failure.name} — {report.evidence_for(failure).detail}")
-        if path.final_originals:
-            match = sum(stage.status == PASS for stage in path.final_originals)
-            print(f"  Original SHA-256 matches — {match}/{len(path.final_originals)} checked")
+        coverage = path.asset_coverage()[path.versions[-1]]
+        if coverage["requested"] is not None:
+            print(f"  Target original SHA-256 — {coverage['matched']}/{coverage['requested']} matched "
+                  f"({coverage['attempted']} attempted)")
     print("Wrote report.md and report.json to the report directory.")
     return code or {PASS: 0, FAIL: 1, UNKNOWN: 2, NOT_RUN: 2}[report.status]
